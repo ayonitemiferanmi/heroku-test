@@ -5,11 +5,11 @@
 streamlit
 numpy  
 pillow 
-#ultralytics
+ultralytics --no-deps
 #matplotlib
 #torch
 requests
-git+https://github.com/THU-MIG/yolov10.git
+#git+https://github.com/THU-MIG/yolov10.git
 #huggingface_hub
 uvicorn
 fastapi
