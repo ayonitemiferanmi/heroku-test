@@ -1,16 +1,15 @@
-#-f https://download.pytorch.org/whl/torch_stable.html
-#torch==1.8.1+cpu 
-#torchvision==0.9.1+cpu
 #opencv-python
 streamlit
 numpy  
 pillow 
-ultralytics --no-deps
-#matplotlib
-#torch
+ultralytics
 requests
 #git+https://github.com/THU-MIG/yolov10.git
 #huggingface_hub
 uvicorn
 fastapi
 #python-multipart
+torch>=1.7
+opencv-python-headless
+matplotlib
+pip>=22.3
