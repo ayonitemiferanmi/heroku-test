@@ -15,7 +15,7 @@
 
 numpy
 pillow
-ultralytics
+#ultralytics
 requests
 git+https://github.com/THU-MIG/yolov10.git
 uvicorn
