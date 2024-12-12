@@ -1,14 +1,26 @@
 #opencv-python
-numpy  
-pillow 
-ultralytics ==8.0.3
-requests
+#numpy  
+#pillow 
+#ultralytics ==8.0.3
+#requests
 #git+https://github.com/THU-MIG/yolov10.git
 #huggingface_hub
-uvicorn
-fastapi
+#uvicorn
+#fastapi
 #python-multipart
-torch>=1.7
+#torch>=1.7
 #opencv-python-headless
 #matplotlib
 #pip>=22.3
+
+numpy
+pillow
+ultralytics
+requests
+git+https://github.com/THU-MIG/yolov10.git
+uvicorn
+fastapi
+torch
+opencv-python-headless
+matplotlib
+
