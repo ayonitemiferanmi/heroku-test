@@ -15,16 +15,15 @@
 
 numpy
 pillow
-#ultralytics
 requests
-#git+https://github.com/THU-MIG/yolov10.git
 uvicorn
 fastapi
-torch==2.1.1+cpu 
-torchvision==0.14.1+cpu
-torchaudio==0.10.1+cpu 
-https://download.pytorch.org/whl/cpu
+torch==2.1.0
+torchvision==0.15.0
+torchaudio==0.15.0
 opencv-python-headless
 matplotlib
+gunicorn
+git+https://github.com/THU-MIG/yolov10.git
 
 
