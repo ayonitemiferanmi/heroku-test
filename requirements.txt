@@ -18,9 +18,9 @@ pillow
 requests
 uvicorn
 fastapi
-torch==2.1.0
-torchvision==0.15.0
-torchaudio==0.15.0
+torch==2.5.1+cpu
+torchvision==0.16.1+cpu
+torchaudio==2.5.1+cpu
 opencv-python-headless
 matplotlib
 gunicorn
