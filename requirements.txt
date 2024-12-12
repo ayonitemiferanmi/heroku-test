@@ -17,7 +17,7 @@ numpy
 pillow
 #ultralytics
 requests
-git+https://github.com/THU-MIG/yolov10.git
+#git+https://github.com/THU-MIG/yolov10.git
 uvicorn
 fastapi
 torch
