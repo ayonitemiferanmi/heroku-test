@@ -20,7 +20,7 @@ requests
 git+https://github.com/THU-MIG/yolov10.git
 uvicorn
 fastapi
-torchvision
+torch
 opencv-python-headless
 matplotlib
 
