@@ -22,7 +22,7 @@ uvicorn
 fastapi
 torch==2.1.1+cpu 
 torchvision==0.14.1+cpu
-torchaudio==0.10.1+cpu --index-url
+torchaudio==0.10.1+cpu 
 https://download.pytorch.org/whl/cpu
 opencv-python-headless
 matplotlib
