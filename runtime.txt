@@ -1,3 +1,3 @@
-python-3.10
-heroku plugins:install heroku-repo
-heroku repo:purge_cache -a fast_api
+python>=3.8
+#heroku plugins:install heroku-repo
+#heroku repo:purge_cache -a fast_api
