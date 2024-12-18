@@ -17,16 +17,15 @@ virtualenv
 numpy
 pillow
 requests
-uvicorn
+#uvicorn
 fastapi
 torch
 torchvision>=0.9.0
-opencv-python-headless
-matplotlib
+#opencv-python-headless
+#matplotlib
 gunicorn
-#ultralytics
-python-multipart
-opencv-python-headless
-huggingface_hub
+ultralytics
+#python-multipart
+#huggingface_hub
 
 
