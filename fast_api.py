@@ -10,6 +10,8 @@ import os
 
 venv_dir = os.path.join(os.path.expanduser("~"), ".venv")
 virtualenv.create_environment(venv_dir)
+exec(open(os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py")).read(), {'__file__': os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py')})
+
 
 app = FastAPI()
 
