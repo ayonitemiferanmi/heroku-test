@@ -13,17 +13,17 @@
 #matplotlib
 #pip>=22.3
 
-virtualenv
+#virtualenv
 #numpy
-pillow
+#pillow
 #requests
 #uvicorn
-fastapi
+#fastapi
 #torch
 #torchvision>=0.9.0
 #opencv-python-headless
 #matplotlib
-gunicorn
+#gunicorn
 ultralytics
 #python-multipart
 #huggingface_hub
