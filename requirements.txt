@@ -14,13 +14,13 @@
 #pip>=22.3
 
 virtualenv
-numpy
+#numpy
 pillow
-requests
+#requests
 #uvicorn
 fastapi
-torch
-torchvision>=0.9.0
+#torch
+#torchvision>=0.9.0
 #opencv-python-headless
 #matplotlib
 gunicorn
