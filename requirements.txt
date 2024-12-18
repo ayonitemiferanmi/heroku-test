@@ -24,7 +24,7 @@ torchvision>=0.9.0
 opencv-python-headless
 matplotlib
 gunicorn
-ultralytics
+#ultralytics
 python-multipart
 opencv-python-headless
 huggingface_hub
