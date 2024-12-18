@@ -5,6 +5,11 @@ import numpy as np
 from ultralytics import YOLOv10
 import io
 import requests
+import virtualenv
+import os
+
+venv_dir = os.path.join(os.path.expanduser("~"), ".venv")
+virtualenv.create_environment(venv_dir)
 
 app = FastAPI()
 
