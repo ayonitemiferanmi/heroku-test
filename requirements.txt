@@ -19,15 +19,14 @@ pillow
 requests
 uvicorn
 fastapi
-#torch==2.5.1+cpu
-#torchvision==0.16.1+cpu
-#torchaudio==2.5.1+cpu
-#torch===1.6.0 torchvision===0.7.0 -f https://download.pytorch.org/whl/torch_stable.html
-#PyTorch>=1.8
+torch
 opencv-python-headless
 matplotlib
 gunicorn
-#ultralytics
+ultralytics
+python-multipart
+opency-python-headless
+huggingface_hub
 #git+https://github.com/THU-MIG/yolov10.git
 
 
