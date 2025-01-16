@@ -1,17 +1,17 @@
-#opencv-python
-#numpy  
-#pillow 
-#ultralytics
-#requests
-#git+https://github.com/THU-MIG/yolov10.git
-#huggingface_hub
-#uvicorn
-#fastapi
-#python-multipart
-#torch>=1.7
-#opencv-python-headless
-#matplotlib
-#pip>=22.3
+opencv-python
+numpy  
+pillow 
+ultralytics
+requests
+#it+https://github.com/THU-MIG/yolov10.git
+huggingface_hub
+uvicorn
+fastapi
+python-multipart
+torch>=1.7
+opencv-python-headless
+matplotlib
+pip>=22.3
 
 #virtualenv
 #numpy
@@ -24,7 +24,7 @@
 #opencv-python-headless
 #matplotlib
 #gunicorn
-ultralytics
+#ultralytics
 #python-multipart
 #huggingface_hub
 
