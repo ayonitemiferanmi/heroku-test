@@ -22,7 +22,7 @@ cloudinary.config(
     secure=True,
 )
 
-torch.serialization.add_safe_globals([YOLOv10DetectionModel])
+#torch.serialization.add_safe_globals([YOLOv10DetectionModel])
 
 # venv_dir = os.path.join(os.path.expanduser("~"), ".venv")
 # virtualenv.create_environment(venv_dir)
@@ -35,8 +35,8 @@ app = FastAPI()
 model_path = "best.pt"
 
 from torch.nn import Sequential
-torch.serialization.add_safe_globals([Sequential])
-torch.serialization.add_safe_globals([Conv])
+#torch.serialization.add_safe_globals([Sequential])
+#torch.serialization.add_safe_globals([Conv])
 
 # Load model from checkpoint
 model = YOLOv10(model_path, task='detect')
