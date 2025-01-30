@@ -14,7 +14,7 @@ import tempfile
 
 
 # Allow YOLOv10DetectionModel in torch deserialization
-torch.serialization.add_safe_globals([YOLOv10DetectionModel])
+torch.serialization.add_safe_globals([YOLOv10])
 
 # Setting up Cloudinary Credentials
 cloudinary.config(
