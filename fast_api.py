@@ -22,6 +22,31 @@ cloudinary.config(
     secure=True,
 )
 
+import torch
+from functools import partial
+from ultralytics.nn.modules.conv import Conv
+
+#Explicitly allow necessary YOLOv10 layers
+torch.serialization.add_safe_globals([Conv])
+
+#Override `torch.load()` to force `weights_only=False`
+original_torch_load = torch.load  # Keep a reference to the original function
+
+def custom_torch_load(*args, **kwargs):
+    kwargs["weights_only"] = False  # Force weights_only=False
+    return original_torch_load(*args, **kwargs)
+
+#Apply the monkey patch
+torch.load = custom_torch_load
+
+#Now, load the YOLOv10 model
+model_path = "best.pt"
+model = YOLOv10(model_path, task='detect')
+
+#Restore the original torch.load after loading the model
+torch.load = original_torch_load
+
+
 #torch.serialization.add_safe_globals([YOLOv10DetectionModel])
 
 # venv_dir = os.path.join(os.path.expanduser("~"), ".venv")
@@ -33,11 +58,11 @@ cloudinary.config(
 app = FastAPI()
 
 # Load the YOLO model (you can also include logic to download it from Hugging Face if not available)
-model_path = "best.pt"
+#model_path = "best.pt"
 
-checkpoint_list = torch.serialization.get_unsafe_globals_in_checkpoint([model_path])
+#checkpoint_list = torch.serialization.get_unsafe_globals_in_checkpoint([model_path])
 
-from torch.nn import Sequential
+#from torch.nn import Sequential
 #torch.serialization.add_safe_globals([Sequential])
 
 #from ultralytics.nn.modules.conv import Conv
@@ -46,7 +71,7 @@ from torch.nn import Sequential
 #torch.serialization.add_safe_globals([Conv, C2f])
 
 # Load model from checkpoint
-model = YOLOv10(model_path, task='detect')
+#model = YOLOv10(model_path, task='detect')
 
 @app.get("/")
 def hello():
