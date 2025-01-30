@@ -12,6 +12,9 @@ import cloudinary
 import cloudinary.uploader
 import tempfile
 import torch
+import torch
+from functools import partial
+from ultralytics.nn.modules.conv import Conv
 
 
 # Setting up Cloudinary Credentials
@@ -22,9 +25,6 @@ cloudinary.config(
     secure=True,
 )
 
-import torch
-from functools import partial
-from ultralytics.nn.modules.conv import Conv
 
 #Explicitly allow necessary YOLOv10 layers
 torch.serialization.add_safe_globals([Conv])
@@ -46,32 +46,7 @@ model = YOLOv10(model_path, task='detect')
 #Restore the original torch.load after loading the model
 torch.load = original_torch_load
 
-
-#torch.serialization.add_safe_globals([YOLOv10DetectionModel])
-
-# venv_dir = os.path.join(os.path.expanduser("~"), ".venv")
-# virtualenv.create_environment(venv_dir)
-# exec(open(os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py")).read(), {'__file__': os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py')})
-
-
-
 app = FastAPI()
-
-# Load the YOLO model (you can also include logic to download it from Hugging Face if not available)
-#model_path = "best.pt"
-
-#checkpoint_list = torch.serialization.get_unsafe_globals_in_checkpoint([model_path])
-
-#from torch.nn import Sequential
-#torch.serialization.add_safe_globals([Sequential])
-
-#from ultralytics.nn.modules.conv import Conv
-#from ultralytics.nn.modules.block import C2f  # Another common missing class
-
-#torch.serialization.add_safe_globals([Conv, C2f])
-
-# Load model from checkpoint
-#model = YOLOv10(model_path, task='detect')
 
 @app.get("/")
 def hello():
