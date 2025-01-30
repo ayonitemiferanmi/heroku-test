@@ -33,9 +33,12 @@ app = FastAPI()
 
 # Load the YOLO model (you can also include logic to download it from Hugging Face if not available)
 model_path = "best.pt"
+
+from torch.nn import Sequential
+torch.serialization.add_safe_globals([Sequential])
+
+# Load model from checkpoint
 model = YOLOv10(model_path, task='detect')
-
-
 
 @app.get("/")
 def hello():
