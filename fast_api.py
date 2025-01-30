@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import StreamingResponse
 from PIL import Image
 import numpy as np
-from ultralytics import YOLOv10
+from ultralytics import YOLOv10, YOLO
 from ultralytics.nn.tasks import YOLOv10DetectionModel
 import io
 import requests
@@ -33,7 +33,7 @@ app = FastAPI()
 
 # Load the YOLO model (you can also include logic to download it from Hugging Face if not available)
 model_path = "best.pt"
-model = YOLOv10(model_path, task='detect')
+model = YOLO(model_path, task='detect')
 
 
 
