@@ -28,12 +28,14 @@ cloudinary.config(
 # virtualenv.create_environment(venv_dir)
 # exec(open(os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py")).read(), {'__file__': os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py')})
 
-checkpoint_list = torch.serialization.get_unsafe_globals_in_checkpoint()
+
 
 app = FastAPI()
 
 # Load the YOLO model (you can also include logic to download it from Hugging Face if not available)
 model_path = "best.pt"
+
+checkpoint_list = torch.serialization.get_unsafe_globals_in_checkpoint([model_path])
 
 from torch.nn import Sequential
 #torch.serialization.add_safe_globals([Sequential])
