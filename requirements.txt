@@ -12,6 +12,7 @@ torch>=1.7
 opencv-python-headless
 matplotlib
 pip>=22.3
+cloudinary
 
 #virtualenv
 #numpy
