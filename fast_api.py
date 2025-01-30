@@ -28,6 +28,7 @@ cloudinary.config(
 # virtualenv.create_environment(venv_dir)
 # exec(open(os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py")).read(), {'__file__': os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py')})
 
+checkpoint_list = torch.serialization.get_unsafe_globals_in_checkpoint()
 
 app = FastAPI()
 
@@ -35,12 +36,12 @@ app = FastAPI()
 model_path = "best.pt"
 
 from torch.nn import Sequential
-torch.serialization.add_safe_globals([Sequential])
+#torch.serialization.add_safe_globals([Sequential])
 
-from ultralytics.nn.modules.conv import Conv
-from ultralytics.nn.modules.block import C2f  # Another common missing class
+#from ultralytics.nn.modules.conv import Conv
+#from ultralytics.nn.modules.block import C2f  # Another common missing class
 
-torch.serialization.add_safe_globals([Conv, C2f])
+#torch.serialization.add_safe_globals([Conv, C2f])
 
 # Load model from checkpoint
 model = YOLOv10(model_path, task='detect')
