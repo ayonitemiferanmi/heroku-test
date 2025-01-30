@@ -35,8 +35,12 @@ app = FastAPI()
 model_path = "best.pt"
 
 from torch.nn import Sequential
-#torch.serialization.add_safe_globals([Sequential])
-#torch.serialization.add_safe_globals([Conv])
+torch.serialization.add_safe_globals([Sequential])
+
+from ultralytics.nn.modules.conv import Conv
+from ultralytics.nn.modules.block import C2f  # Another common missing class
+
+torch.serialization.add_safe_globals([Conv, C2f])
 
 # Load model from checkpoint
 model = YOLOv10(model_path, task='detect')
