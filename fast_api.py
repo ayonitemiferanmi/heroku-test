@@ -2,7 +2,8 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import StreamingResponse
 from PIL import Image
 import numpy as np
-from ultralytics import YOLOv10, YOLO
+from ultralytics import YOLOv10
+from ultralytics.nn.tasks import YOLOv10DetectionModel
 import io
 import requests
 import os
@@ -10,6 +11,7 @@ import json
 import cloudinary
 import cloudinary.uploader
 import tempfile
+import torch
 
 
 # Setting up Cloudinary Credentials
@@ -20,6 +22,8 @@ cloudinary.config(
     secure=True,
 )
 
+torch.serialization.add_safe_globals([YOLOv10DetectionModel])
+
 # venv_dir = os.path.join(os.path.expanduser("~"), ".venv")
 # virtualenv.create_environment(venv_dir)
 # exec(open(os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py")).read(), {'__file__': os.path.join(os.path.expanduser("~"), ".venv", "Scripts", "fast_api.py')})
@@ -29,7 +33,8 @@ app = FastAPI()
 
 # Load the YOLO model (you can also include logic to download it from Hugging Face if not available)
 model_path = "best.pt"
-model = YOLO(model_path, task='detect')
+model = YOLOv10(model_path, task='detect')
+
 
 @app.get("/")
 def hello():
