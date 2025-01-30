@@ -7,6 +7,18 @@ import io
 import requests
 import os
 import json
+import cloudinary
+import cloudinary.uploader
+import tempfile
+
+
+# Setting up Cloudinary Credentials
+cloudinary.config(
+    cloud_name="dmtd60ln7",
+    api_key="736887161144449",
+    api_secret="gTClh1QjelFwhQolG9ZnIYf9KXw",
+    secure=True,
+)
 
 # venv_dir = os.path.join(os.path.expanduser("~"), ".venv")
 # virtualenv.create_environment(venv_dir)
@@ -25,12 +37,23 @@ def hello():
 
 @app.post("/detect")
 async def detect_objects(file: UploadFile = File(...), confidence: float = 0.05):
-    global results
+    global results, cloudinary_image
+
     # Read the uploaded image file
     image_bytes = await file.read()
     
     # Open the image using PIL
     input_image = Image.open(io.BytesIO(image_bytes))
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_file_path = os.path.join(temp_dir, file.filename)
+
+        # Save the image to the temporary directory
+        with open(temp_file_path, 'wb') as temp_file:
+            temp_file.write(image_bytes)
+
+        # Upload the image file to Cloudinary
+        cloudinary_image = cloudinary.uploader.upload(temp_file_path, unique_filename=False, overwrite=True)
     
     # Convert PIL image to numpy array for model processing
     image_np = np.array(input_image)
@@ -61,10 +84,16 @@ def get_json_response() -> dict:
     for result in results:
         json_result_string = json.loads(result.tojson())
 
+    # Extracting the url from Cloudinary
+    image_url = cloudinary_image["secure_url"]
+
     # Put everything together and add the key name for every dectected object
     final_dict = {}
     for i in range(len(json_result_string)):
         final_dict[f"Detection-{i}"] = json_result_string[i]
+
+        # Add the image url to the final dictionary
+        final_dict["image_url"] = image_url
     
     json_dumped_result = json.dumps(final_dict, indent=3)
     
