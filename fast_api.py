@@ -36,6 +36,7 @@ model_path = "best.pt"
 
 from torch.nn import Sequential
 torch.serialization.add_safe_globals([Sequential])
+torch.serialization.add_safe_globals([Conv])
 
 # Load model from checkpoint
 model = YOLOv10(model_path, task='detect')
