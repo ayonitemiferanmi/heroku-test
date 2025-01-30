@@ -2,6 +2,7 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import StreamingResponse
 from PIL import Image
 import numpy as np
+import torch
 from ultralytics import YOLOv10
 import io
 import requests
@@ -11,6 +12,9 @@ import cloudinary
 import cloudinary.uploader
 import tempfile
 
+
+# Allow YOLOv10DetectionModel in torch deserialization
+torch.serialization.add_safe_globals([YOLOv10DetectionModel])
 
 # Setting up Cloudinary Credentials
 cloudinary.config(
