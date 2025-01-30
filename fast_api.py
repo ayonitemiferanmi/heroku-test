@@ -22,7 +22,7 @@ cloudinary.config(
     secure=True,
 )
 
-torch.add_safe_globals([YOLOv10DetectionModel])
+torch.serialization.add_safe_globals([YOLOv10DetectionModel])
 
 # venv_dir = os.path.join(os.path.expanduser("~"), ".venv")
 # virtualenv.create_environment(venv_dir)
